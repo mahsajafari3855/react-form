@@ -1,28 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 export default function Signup() {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+    isAccepted: false,
+  });
+  const changeHandler = (event) => {
+    if (event.target.name === "isAccepted") {
+      setData({ ...data, [event.target.name]: event.target.checked });
+    } else setData({ ...data, [event.target.name]: event.target.value });
+    console.log(data);
+  };
 
-
-    const[data,setData]=useState({
-        name:"",
-        email:"",
-        password:"",
-        confirmpassword:"",
-        isAccepted:false
-
-    })
-    const changeHandler=(event)=>{
-        if(event.target.name==="isAccepted"){
-            setData({...data,[event.target.name]:event.target.checked})
-            }
-            else
-             setData({...data,[event.target.name]:event.target.value})
-             console.log(data)
-        }
-
-    
-
-    
   return (
     <div>
       <form>
@@ -73,9 +65,7 @@ export default function Signup() {
           />
         </div>
         <div>
-          
           <button type="submit">SignUp</button>
-        
         </div>
       </form>
     </div>
